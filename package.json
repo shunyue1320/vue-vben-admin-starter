@@ -1,18 +1,18 @@
 {
   "name": "vue-vben-admin-starter",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
+    "bootstrap": "pnpm install",
+    "build": "vite build",
+    "dev": "vite",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "turbo run stub",
-    "bootstrap": "pnpm install",
+    "lint": "turbo run lint",
     "prepare": "husky install",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "turbo run lint"
+    "preview": "vite preview"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -45,6 +45,8 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@vben/eslint-config": "workspace:*",
     "@vben/ts-config": "workspace:*",
     "@vben/vite-config": "workspace:*",
