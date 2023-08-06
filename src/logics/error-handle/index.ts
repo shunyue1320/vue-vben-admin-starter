@@ -2,11 +2,11 @@
  * 用于配置全局错误处理功能，可以监控vue错误、脚本错误、静态资源错误和Promise错误
  */
 import type { App } from 'vue'
+import type { ErrorLogInfo } from '#/store'
 
 import projectSetting from '@/settings/projectSetting'
 import { useErrorLogStoreWithOut } from '@/store/modules/errorLog'
 import { ErrorTypeEnum } from '@/enums/exceptionEnum'
-import type { ErrorLogInfo } from '#/store'
 
 function formatComponentName(vm: any) {
   if (vm.$root === vm) {
