@@ -1,6 +1,5 @@
 import { resolve } from 'node:path';
 
-
 import dayjs from 'dayjs';
 import { readPackageJSON } from 'pkg-types';
 import { defineConfig, loadEnv, mergeConfig, type UserConfig } from 'vite';
