@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "turbo run stub",
@@ -22,5 +23,10 @@
     "typescript": "^5.1.6",
     "unbuild": "^1.2.1",
     "vite": "^4.4.5"
+  },
+  "packageManager": "pnpm@8.6.11",
+  "engines": {
+    "node": ">=16.15.1",
+    "pnpm": ">=8.1.0"
   }
 }
