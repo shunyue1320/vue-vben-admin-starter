@@ -5,6 +5,7 @@ import { setupStore } from '@/store'
 import { registerGlobComp } from '@/components/registerGlobComp'
 import { setupI18n } from '@/locales/setupI18n'
 import { setupGlobDirectives } from '@/directives'
+import { setupErrorHandle } from '@/logics/error-handle'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -23,6 +24,11 @@ async function bootstrap() {
 
   // 注册全局指令
   setupGlobDirectives(app)
+
+  // 配置全局错误处理
+  setupErrorHandle(app)
+
+  app.mount('#app')
 }
 
 bootstrap()
