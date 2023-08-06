@@ -6,6 +6,7 @@ import { registerGlobComp } from '@/components/registerGlobComp'
 import { setupI18n } from '@/locales/setupI18n'
 import { setupGlobDirectives } from '@/directives'
 import { setupErrorHandle } from '@/logics/error-handle'
+import { setupRouter } from '@/router'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -21,6 +22,9 @@ async function bootstrap() {
 
   // 多语言配置异步案例：语言文件可能从服务器端获取
   await setupI18n(app)
+
+  // 配置路由
+  setupRouter(app)
 
   // 注册全局指令
   setupGlobDirectives(app)
