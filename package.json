@@ -11,6 +11,7 @@
     "preinstall": "npx only-allow pnpm",
     "postinstall": "turbo run stub",
     "lint": "turbo run lint",
+    "lint:stylelint": "stylelint \"**/*.{vue,css,less,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/",
     "prepare": "husky install",
     "preview": "vite preview"
   },
@@ -27,10 +28,12 @@
     ],
     "*.vue": [
       "prettier --write",
-      "eslint --fix"
+      "eslint --fix",
+      "stylelint --fix"
     ],
     "*.{scss,less,styl,html}": [
-      "prettier --write"
+      "prettier --write",
+      "stylelint --fix"
     ],
     "*.md": [
       "prettier --write"
@@ -48,6 +51,7 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "@vben/eslint-config": "workspace:*",
+    "@vben/stylelint-config": "workspace:*",
     "@vben/ts-config": "workspace:*",
     "@vben/vite-config": "workspace:*",
     "cz-git": "^1.6.1",
