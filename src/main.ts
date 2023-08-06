@@ -4,6 +4,7 @@ import App from './App.vue'
 import { setupStore } from '@/store'
 import { registerGlobComp } from '@/components/registerGlobComp'
 import { setupI18n } from '@/locales/setupI18n'
+import { setupGlobDirectives } from '@/directives'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -19,6 +20,9 @@ async function bootstrap() {
 
   // 多语言配置异步案例：语言文件可能从服务器端获取
   await setupI18n(app)
+
+  // 注册全局指令
+  setupGlobDirectives(app)
 }
 
 bootstrap()
