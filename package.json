@@ -4,9 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "turbo run stub",
+    "bootstrap": "pnpm install",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "turbo run lint"
   },
   "dependencies": {
     "vue": "^3.3.4"
@@ -14,7 +18,9 @@
   "devDependencies": {
     "@vben/ts-config": "workspace:*",
     "@vitejs/plugin-vue": "^4.2.3",
+    "turbo": "^1.10.7",
     "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
     "vite": "^4.4.5"
   }
 }
