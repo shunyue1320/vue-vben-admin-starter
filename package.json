@@ -48,6 +48,7 @@
     "@vben/eslint-config": "workspace:*",
     "@vben/ts-config": "workspace:*",
     "@vben/vite-config": "workspace:*",
+    "cz-git": "^1.6.1",
     "husky": "^8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "^2.8.8",
