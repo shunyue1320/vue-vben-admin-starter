@@ -5,8 +5,9 @@ import { setupStore } from '@/store'
 import { registerGlobComp } from '@/components/registerGlobComp'
 import { setupI18n } from '@/locales/setupI18n'
 import { setupGlobDirectives } from '@/directives'
+import { setupRouter, router } from '@/router'
+import { setupRouterGuard } from '@/router/guard'
 import { setupErrorHandle } from '@/logics/error-handle'
-import { setupRouter } from '@/router'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -25,6 +26,9 @@ async function bootstrap() {
 
   // 配置路由
   setupRouter(app)
+
+  // 路由守卫
+  setupRouterGuard(router)
 
   // 注册全局指令
   setupGlobDirectives(app)
