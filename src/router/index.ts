@@ -4,6 +4,15 @@ import type { App } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { basicRoutes } from './routes'
 
+// 白名单应该包含基本静态路由
+const WHITE_NAME_LIST: string[] = []
+const getRouteNames = (array: any[]) =>
+  array.forEach((item) => {
+    WHITE_NAME_LIST.push(item.name)
+    getRouteNames(item.children || [])
+  })
+getRouteNames(basicRoutes)
+
 /** 创建路由器 */
 export const router = createRouter({
   // 创建一个 hash 历史记录。
@@ -15,6 +24,17 @@ export const router = createRouter({
   // 指定滚动行为。这个功能只在支持 history.pushState 的浏览器中可用。
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
+
+// 重置路由器
+export function resetRouter() {
+  router.getRoutes().forEach((route) => {
+    const { name } = route
+    // 从路由器中删除不在白名单的路由
+    if (name && !WHITE_NAME_LIST.includes(name as string)) {
+      router.hasRoute(name) && router.removeRoute(name)
+    }
+  })
+}
 
 /** 注册路由器 */
 export function setupRouter(app: App<Element>) {

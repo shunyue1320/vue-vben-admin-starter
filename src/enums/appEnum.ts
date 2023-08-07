@@ -8,7 +8,7 @@ export enum ContentEnum {
   FIXED = 'fixed',
 }
 
-// menu theme enum
+/** 主题枚举 */
 export enum ThemeEnum {
   DARK = 'dark',
   LIGHT = 'light',

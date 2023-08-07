@@ -1,5 +1,52 @@
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko'
 
+export interface MenuSetting {
+  bgColor: string
+  fixed: boolean
+  collapsed: boolean
+  siderHidden: boolean
+  canDrag: boolean
+  show: boolean
+  hidden: boolean
+  split: boolean
+  menuWidth: number
+  mode: MenuModeEnum
+  type: MenuTypeEnum
+  theme: ThemeEnum
+  topMenuAlign: 'start' | 'center' | 'end'
+  trigger: TriggerEnum
+  accordion: boolean
+  closeMixSidebarOnChange: boolean
+  collapsedShowTitle: boolean
+  mixSideTrigger: MixSidebarTriggerEnum
+  mixSideFixed: boolean
+}
+
+export interface MultiTabsSetting {
+  cache: boolean
+  show: boolean
+  showQuick: boolean
+  canDrag: boolean
+  showRedo: boolean
+  showFold: boolean
+}
+
+export interface HeaderSetting {
+  bgColor: string
+  fixed: boolean
+  show: boolean
+  theme: ThemeEnum
+  // Turn on full screen
+  showFullScreen: boolean
+  // Whether to show the lock screen
+  useLockPage: boolean
+  // Show document button
+  showDoc: boolean
+  // Show message center button
+  showNotice: boolean
+  showSearch: boolean
+}
+
 export interface LocaleSetting {
   // 显示选择器
   showPicker: boolean
@@ -11,15 +58,15 @@ export interface LocaleSetting {
   availableLocales: LocaleType[]
 }
 
-export interface GlobEnvConfig {
-  // Site title
-  VITE_GLOB_APP_TITLE: string
-  // Service interface url
-  VITE_GLOB_API_URL: string
-  // Service interface url prefix
-  VITE_GLOB_API_URL_PREFIX?: string
-  // Upload url
-  VITE_GLOB_UPLOAD_URL?: string
+export interface TransitionSetting {
+  //  Whether to open the page switching animation
+  enable: boolean
+  // Route basic switching animation
+  basicTransition: RouterTransitionEnum
+  // Whether to open page switching loading
+  openPageLoading: boolean
+  // Whether to open the top progress bar
+  openNProgress: boolean
 }
 
 export interface ProjectConfig {
@@ -76,4 +123,15 @@ export interface ProjectConfig {
   closeMessageOnSwitch: boolean
   // Whether to cancel the http request that has been sent but not responded when switching the interface.
   removeAllHttpPending: boolean
+}
+
+export interface GlobEnvConfig {
+  // Site title
+  VITE_GLOB_APP_TITLE: string
+  // Service interface url
+  VITE_GLOB_API_URL: string
+  // Service interface url prefix
+  VITE_GLOB_API_URL_PREFIX?: string
+  // Upload url
+  VITE_GLOB_UPLOAD_URL?: string
 }
