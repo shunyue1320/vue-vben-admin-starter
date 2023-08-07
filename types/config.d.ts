@@ -125,6 +125,19 @@ export interface ProjectConfig {
   removeAllHttpPending: boolean
 }
 
+export interface GlobConfig {
+  // 网站标题
+  title: string
+  // 服务接口url
+  apiUrl: string
+  // 上传url
+  uploadUrl?: string
+  //  服务接口url前缀
+  urlPrefix?: string
+  // 项目简称
+  shortName: string
+}
+
 export interface GlobEnvConfig {
   // Site title
   VITE_GLOB_APP_TITLE: string
