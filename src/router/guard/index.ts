@@ -1,11 +1,13 @@
 import type { Router } from 'vue-router'
 
 import { setRouteChange } from '@/logics/mitt/routeChange'
+import { createPermissionGuard } from './permissionGuard'
 
 // 不要更改下面创建顺序
 export function setupRouterGuard(router: Router) {
   createPageGuard(router)
   createScrollGuard(router)
+  createPermissionGuard(router) // 设置路由前置钩子，监听路由调整，动态添加路由
 }
 
 /** 监听路由更改, 并将已经加载好的页面设置缓存记录 */
