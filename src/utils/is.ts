@@ -51,3 +51,8 @@ export function isEmpty<T = unknown>(val: T): val is T {
 export function isFunction(val: unknown): val is Function {
   return typeof val === 'function'
 }
+
+export function isUrl(path: string): boolean {
+  const reg = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/
+  return reg.test(path)
+}
