@@ -1,30 +1,29 @@
-import { resolve } from 'node:path';
+import { resolve } from 'node:path'
 
-import { generate } from '@ant-design/colors';
+import { generate } from '@ant-design/colors'
 // @ts-ignore: typo
-import { getThemeVariables } from 'ant-design-vue/dist/theme';
+import { getThemeVariables } from 'ant-design-vue/dist/theme'
 
-const primaryColor = '#0960bd';
+const primaryColor = '#0960bd'
 
 function generateAntColors(color: string, theme: 'default' | 'dark' = 'default') {
   return generate(color, { theme })
 }
 
-
 /**
  * less 全局变量
  */
 export function generateModifyVars() {
-  const palettes = generateAntColors(primaryColor);
-  const primary = palettes[5];
+  const palettes = generateAntColors(primaryColor)
+  const primary = palettes[5]
 
-  const primaryColorObj: Record<string, string> = {};
+  const primaryColorObj: Record<string, string> = {}
 
   for (let index = 0; index < 10; index++) {
-    primaryColorObj[`primary-${index + 1}`] = palettes[index];
+    primaryColorObj[`primary-${index + 1}`] = palettes[index]
   }
 
-  const modifyVars = getThemeVariables();
+  const modifyVars = getThemeVariables()
 
   return {
     ...modifyVars,
