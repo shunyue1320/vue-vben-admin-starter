@@ -1,5 +1,9 @@
-import { defineApplicationConfig } from '@vben/vite-config';
+import { defineApplicationConfig } from '@vben/vite-config'
 
 export default defineApplicationConfig({
-  overrides: {}
+  overrides: {
+    server: {
+      port: 6600,
+    },
+  },
 })

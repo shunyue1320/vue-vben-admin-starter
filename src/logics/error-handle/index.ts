@@ -100,7 +100,7 @@ export function scriptErrorHandler(
   return true
 }
 
-/** 配置 Promise错误处理功能 */
+/** 配置 Promise 错误处理功能 */
 function registerPromiseErrorHandler() {
   window.addEventListener(
     'unhandledrejection',
@@ -120,7 +120,7 @@ function registerPromiseErrorHandler() {
   )
 }
 
-// 配置静态资源错误处理功能
+/** 配置静态资源错误处理功能 */
 function registerResourceErrorHandler() {
   window.addEventListener('error', function (e: Event) {
     const target = e.target ? e.target : (e.srcElement as any)

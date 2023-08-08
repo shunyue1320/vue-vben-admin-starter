@@ -1,3 +1,7 @@
+import 'uno.css'
+import '@/design/index.less'
+import 'ant-design-vue/dist/antd.less'
+
 import { createApp } from 'vue'
 
 import App from './App.vue'
@@ -13,28 +17,28 @@ import { setupErrorHandle } from '@/logics/error-handle'
 async function bootstrap() {
   const app = createApp(App)
 
-  // 配置存储
+  // pinia状态管理注册
   setupStore(app)
 
-  // 初始化内部系统配置
+  // 项目系统配置初始化
   initAppConfigStore()
 
-  // 注册全局组件
+  // 全局组件注册
   registerGlobComp(app)
 
-  // 多语言配置异步案例：语言文件可能从服务器端获取
+  // 国际化多语言配置 异步案例：语言文件可能从服务器端获取
   await setupI18n(app)
 
-  // 配置路由
+  // 路由配置
   setupRouter(app)
 
   // 路由守卫
   setupRouterGuard(router)
 
-  // 注册全局指令
+  // 全局指令注册
   setupGlobDirectives(app)
 
-  // 配置全局错误处理
+  // 全局错误处理注册
   setupErrorHandle(app)
 
   app.mount('#app')

@@ -8,7 +8,7 @@ export function setupRouterGuard(router: Router) {
   createScrollGuard(router)
 }
 
-/** 通知路由更改, 页面已经加载设置缓存记录 */
+/** 监听路由更改, 并将已经加载好的页面设置缓存记录 */
 function createPageGuard(router: Router) {
   // 用于记录页面是否已经加载
   const loadedPageMap = new Map<string, boolean>()
@@ -17,7 +17,7 @@ function createPageGuard(router: Router) {
     // 页面已经加载，再次打开会更快，不需要进行加载和其他处理
     to.meta.loaded = !!loadedPageMap.get(to.path)
 
-    // 通知路由更改
+    // 监听路由更改
     setRouteChange(to)
 
     return true
