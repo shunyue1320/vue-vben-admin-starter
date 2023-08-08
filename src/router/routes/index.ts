@@ -1,7 +1,18 @@
-import { AppRouteRecordRaw } from '@/router/types'
+import type { AppRouteModule, AppRouteRecordRaw } from '@/router/types'
 
 import { t } from '@/hooks/web/useI18n'
 import { PageEnum } from '@/enums/pageEnum'
+
+// 遍历目录导入路由（import.meta.glob() 直接引入文件夹下所有的模块 Vite 独有的功能）
+const modules = import.meta.glob('./modules/**/*.ts', { eager: true })
+const routeModuleList: AppRouteModule[] = []
+Object.keys(modules).forEach((key) => {
+  const mod = (modules as Recordable)[key].default || {}
+  const modList = Array.isArray(mod) ? [...mod] : [mod]
+  routeModuleList.push(...modList)
+})
+
+export const asyncRoutes = [...routeModuleList]
 
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
