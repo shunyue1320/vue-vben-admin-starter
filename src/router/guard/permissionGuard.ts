@@ -11,6 +11,7 @@ const ROOT_PATH = RootRoute.path
 const LOGIN_PATH = PageEnum.BASE_LOGIN
 const whitePathList: PageEnum[] = [LOGIN_PATH]
 
+/** 设置路由前置钩子，监听路由调整，动态添加路由 */
 export function createPermissionGuard(router: Router) {
   const userStore = useUserStoreWithOut()
   const permissionStore = usePermissionStoreWithOut()
