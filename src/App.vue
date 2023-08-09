@@ -1,11 +1,14 @@
 <template>
   <ConfigProvider :locale="getAntdLocale">
-    <RouterView />
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
   </ConfigProvider>
 </template>
 
 <script lang="ts" setup>
   import { ConfigProvider } from 'ant-design-vue'
+  import { AppProvider } from '@/components/Application'
   import { useLocale } from '@/locales/useLocale'
   import { useTitle } from '@/hooks/web/useTitle'
   import 'dayjs/locale/zh-cn'
