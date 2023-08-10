@@ -72,6 +72,7 @@
     min-height: 100%;
     overflow: hidden;
 
+    /* stylelint-disable-next-line media-query-no-invalid */
     @media (max-width: @screen-xl) {
       background-color: #293146;
     }
@@ -93,6 +94,7 @@
       background-position: 100%;
       background-size: auto 100%;
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media (max-width: @screen-xl) {
         display: none;
       }
