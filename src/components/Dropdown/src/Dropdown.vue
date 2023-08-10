@@ -17,15 +17,15 @@
               :disabled="item.disabled"
             >
               <template #icon v-if="item.popConfirm.icon">
-                <Icon :icon="item.popConfirm.icon" />
+                <Icon height="16" :icon="item.popConfirm.icon" class="text-base" />
               </template>
               <div>
-                <Icon :icon="item.icon" v-if="item.icon" />
+                <Icon :icon="item.icon" v-if="item.icon" class="text-base" />
                 <span class="ml-1">{{ item.text }}</span>
               </div>
             </a-popconfirm>
             <template v-else>
-              <Icon :icon="item.icon" v-if="item.icon" />
+              <Icon :icon="item.icon" v-if="item.icon" class="text-base" />
               <span class="ml-1">{{ item.text }}</span>
             </template>
           </a-menu-item>
@@ -43,6 +43,7 @@
   import { PropType, computed } from 'vue'
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue'
   import { isFunction, omit } from 'lodash-es'
+  import { Icon } from '@iconify/vue'
 
   const ADropdown = Dropdown
   const AMenu = Menu

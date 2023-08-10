@@ -10,7 +10,7 @@
     overlayClassName="app-locale-picker-overlay"
   >
     <span class="cursor-pointer flex items-center">
-      <Icon icon="ion:language" />
+      <Icon class="text-base" icon="ion:language" />
       <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
     </span>
   </Dropdown>
@@ -20,6 +20,7 @@
   import type { LocaleType } from '#/config'
   import { DropMenu, Dropdown } from '@/components/Dropdown'
   import { computed, ref, unref, watchEffect } from 'vue'
+  import { Icon } from '@iconify/vue'
   import { useLocale } from '@/locales/useLocale'
   import { localeList } from '@/settings/localeSetting'
 
