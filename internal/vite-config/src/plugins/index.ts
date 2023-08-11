@@ -1,38 +1,37 @@
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import { type PluginOption } from 'vite';
-import purgeIcons from 'vite-plugin-purge-icons';
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { type PluginOption } from 'vite'
+import purgeIcons from 'vite-plugin-purge-icons'
 
-import { createAppConfigPlugin } from './appConfig';
-import { configHtmlPlugin } from './html';
-import { configSvgIconsPlugin } from './svgSprite';
-import { configCompressPlugin } from './compress';
-import { configVisualizerConfig } from './visualizer';
-import { configMockPlugin } from './mock';
+import { createAppConfigPlugin } from './appConfig'
+import { configCompressPlugin } from './compress'
+import { configHtmlPlugin } from './html'
+import { configMockPlugin } from './mock'
+import { configSvgIconsPlugin } from './svgSprite'
+import { configVisualizerConfig } from './visualizer'
 
 interface Options {
-  isBuild: boolean;
-  root: string;
-  compress: string;
-  enableMock?: boolean;
-  enableAnalyze?: boolean;
+  isBuild: boolean
+  root: string
+  compress: string
+  enableMock?: boolean
+  enableAnalyze?: boolean
 }
 
-
 async function createPlugins({ isBuild, root, enableAnalyze, enableMock, compress }: Options) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx()];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx()]
 
-  const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
-  vitePlugins.push(appConfigPlugin);
+  const appConfigPlugin = await createAppConfigPlugin({ root, isBuild })
+  vitePlugins.push(appConfigPlugin)
 
   // vite-plugin-html
-  vitePlugins.push(configHtmlPlugin({ isBuild }));
+  vitePlugins.push(configHtmlPlugin({ isBuild }))
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin({ isBuild }));
+  vitePlugins.push(configSvgIconsPlugin({ isBuild }))
 
   // vite-plugin-purge-icons
-  vitePlugins.push(purgeIcons());
+  vitePlugins.push(purgeIcons())
 
   // 以下插件仅适用于生产环境
   if (isBuild) {
@@ -41,20 +40,20 @@ async function createPlugins({ isBuild, root, enableAnalyze, enableMock, compres
       configCompressPlugin({
         compress,
       }),
-    );
+    )
   }
-  
+
   // rollup-plugin-visualizer
   if (enableAnalyze) {
-    vitePlugins.push(configVisualizerConfig());
+    vitePlugins.push(configVisualizerConfig())
   }
 
   // vite-plugin-mock
   if (enableMock) {
-    vitePlugins.push(configMockPlugin({ isBuild }));
+    vitePlugins.push(configMockPlugin({ isBuild }))
   }
 
-  return vitePlugins;
+  return vitePlugins
 }
 
-export { createPlugins };
+export { createPlugins }

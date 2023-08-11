@@ -53,6 +53,7 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.9",
     "lodash-es": "^4.17.21",
+    "mockjs": "^1.1.0",
     "pinia": "2.1.4",
     "qs": "^6.11.2",
     "vue": "^3.3.4",
@@ -76,7 +77,8 @@
     "turbo": "^1.10.7",
     "typescript": "^5.1.6",
     "unbuild": "^1.2.1",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-mock": "^2.9.6"
   },
   "packageManager": "pnpm@8.6.11",
   "engines": {

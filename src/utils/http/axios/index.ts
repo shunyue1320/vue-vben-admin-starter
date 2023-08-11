@@ -3,7 +3,6 @@ import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform'
 
 import axios from 'axios'
 import { clone } from 'lodash-es'
-import { useI18n } from 'vue-i18n'
 
 import { VAxios } from './Axios'
 import { deepMerge, setObjToUrlParams } from '@/utils'
@@ -18,6 +17,7 @@ import { getToken } from '@/utils/auth'
 import { useErrorLogStoreWithOut } from '@/store/modules/errorLog'
 import { checkStatus } from './checkStatus'
 import { AxiosRetry } from './axiosRetry'
+import { useI18n } from '@/hooks/web/useI18n'
 
 const globSetting = useGlobSetting()
 const urlPrefix = globSetting.urlPrefix // url前缀，如 /api

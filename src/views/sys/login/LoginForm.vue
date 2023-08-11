@@ -45,6 +45,7 @@
 
   const FormItem = Form.Item
   const InputPassword = Input.Password
+  const { prefixCls } = useDesign('login')
   const { t } = useI18n()
   const formRef = ref()
   const loading = ref(false)
@@ -83,7 +84,6 @@
         })
       }
     } catch (error) {
-      const { prefixCls } = useDesign('login')
       createErrorModal({
         title: t('sys.api.errorTip'),
         content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),

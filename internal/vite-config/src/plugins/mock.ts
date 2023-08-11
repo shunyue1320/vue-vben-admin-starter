@@ -2,7 +2,7 @@
  * 用于开发和生产的模拟插件。
  * https://github.com/anncwb/vite-plugin-mock
  */
-import { viteMockServe } from 'vite-plugin-mock';
+import { viteMockServe } from 'vite-plugin-mock'
 
 export function configMockPlugin({ isBuild }: { isBuild: boolean }) {
   return viteMockServe({
@@ -15,5 +15,5 @@ export function configMockPlugin({ isBuild }: { isBuild: boolean }) {
 
       setupProdMockServer();
       `,
-  });
+  })
 }
