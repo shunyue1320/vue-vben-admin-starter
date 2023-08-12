@@ -44,6 +44,14 @@ const ss = createSessionStorage()
 const localMemory = new Memory(DEFAULT_CACHE_TIME)
 const sessionMemory = new Memory(DEFAULT_CACHE_TIME)
 
+/** 初始化持久数据 */
+function initPersistentMemory() {
+  const localCache = ls.get(APP_LOCAL_CACHE_KEY)
+  const sessionCache = ss.get(APP_SESSION_CACHE_KEY)
+  localCache && localMemory.resetCache(localCache)
+  sessionCache && sessionMemory.resetCache(sessionCache)
+}
+
 export class Persistent {
   static getLocal<T>(key: LocalKeys) {
     return localMemory.get(key)?.value as Nullable<T>
@@ -130,3 +138,5 @@ function storageChange(e: StorageEvent) {
 window.addEventListener('beforeunload', beforeunloadChange)
 // 同一域名下的不同窗口或标签页之间共享相同的 localStorage 数据时，当其中一个窗口更新了 localStorage 数据时会触发 storage 事件
 window.addEventListener('storage', storageChange)
+
+initPersistentMemory()
