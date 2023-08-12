@@ -1,4 +1,4 @@
-import type { NamePath } from 'ant-design-vue/lib/form/interface'
+import type { NamePath, RuleObject } from 'ant-design-vue/lib/form/interface'
 import { Ref, computed, ref, unref } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { FormInstance } from 'ant-design-vue'
@@ -20,7 +20,11 @@ export function useLoginState() {
     cuurentState.value = state
   }
 
-  return { getLoginState, setLoginState }
+  function handleBackLogin() {
+    setLoginState(LoginStateEnum.LOGIN)
+  }
+
+  return { getLoginState, setLoginState, handleBackLogin }
 }
 
 export function useFormValid<T extends Object = any>(formRef: Ref<FormInstance>) {
@@ -39,21 +43,51 @@ export function useFormValid<T extends Object = any>(formRef: Ref<FormInstance>)
   return { validate, validForm }
 }
 
-export function useFormRules() {
+export function useFormRules(formData?: Recordable) {
   const { t } = useI18n()
 
   const getAccountFormRule = computed(() => createRule(t('sys.login.accountPlaceholder')))
   const getPasswordFormRule = computed(() => createRule(t('sys.login.passwordPlaceholder')))
+  const getSmsFormRule = computed(() => createRule(t('sys.login.smsPlaceholder')))
+  const getMobileFormRule = computed(() => createRule(t('sys.login.mobilePlaceholder')))
+
+  const validatePolicy = async (_: RuleObject, value: boolean) => {
+    return !value ? Promise.reject(t('sys.login.policyPlaceholder')) : Promise.resolve()
+  }
+
+  const validateConfirmPassword = (password: string) => {
+    return async (_: RuleObject, value: string) => {
+      if (!value) {
+        return Promise.reject(t('sys.login.passwordPlaceholder'))
+      }
+      if (value !== password) {
+        return Promise.reject(t('sys.login.diffPwd'))
+      }
+      return Promise.resolve()
+    }
+  }
 
   const getFormRules = computed((): { [k: string]: object | object[] } => {
     const accountFormRule = unref(getAccountFormRule)
     const passwordFormRule = unref(getPasswordFormRule)
+    const smsFormRule = unref(getSmsFormRule)
+    const mobileFormRule = unref(getMobileFormRule)
+
+    const mobileRule = {
+      sms: smsFormRule,
+      mobile: mobileFormRule,
+    }
 
     switch (unref(cuurentState)) {
       case LoginStateEnum.REGISTER:
         return {
           account: accountFormRule,
           password: passwordFormRule,
+          confirmPassword: [
+            { validator: validateConfirmPassword(formData?.password), trigger: 'change' },
+          ],
+          policy: [{ validator: validatePolicy, trigger: 'change' }],
+          ...mobileRule,
         }
 
       default:
