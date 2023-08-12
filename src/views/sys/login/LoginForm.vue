@@ -55,8 +55,8 @@
           </Button>
         </Col>
         <Col :md="8" :xs="24">
-          <Button block @click="setLoginState(LoginStateEnum.MOBILE)">
-            {{ t('sys.login.mobileSignInFormTitle') }}
+          <Button block @click="setLoginState(LoginStateEnum.QR_CODE)">
+            {{ t('sys.login.qrSignInFormTitle') }}
           </Button>
         </Col>
         <Col :md="8" :xs="24">

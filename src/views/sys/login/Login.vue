@@ -34,6 +34,8 @@
             <LoginForm />
             <ForgetPasswordForm />
             <RegisterForm />
+            <MobileForm />
+            <QrCodeForm />
           </div>
         </div>
       </div>
@@ -51,6 +53,8 @@
   import LoginForm from './LoginForm.vue'
   import ForgetPasswordForm from './ForgetPasswordForm.vue'
   import RegisterForm from './RegisterForm.vue'
+  import MobileForm from './MobileForm.vue'
+  import QrCodeForm from './QrCodeForm.vue'
 
   defineProps({
     sessionTimeout: {
