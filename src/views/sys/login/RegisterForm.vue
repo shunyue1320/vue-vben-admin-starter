@@ -70,6 +70,7 @@
   import { Form, Input, Button, Checkbox } from 'ant-design-vue'
   import LoginFormTitle from './LoginFormTitle.vue'
   import { CountdownInput } from '@/components/CountDown'
+  import { StrengthMeter } from '@/components/StrengthMeter'
   import { useI18n } from '@/hooks/web/useI18n'
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './useLogin'
 
@@ -97,6 +98,7 @@
 
   async function handleRegister() {
     const data = await validForm()
+    console.log('data=====', data)
     if (!data) return
   }
 </script>
