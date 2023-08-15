@@ -14,6 +14,9 @@ importers:
       '@iconify/vue':
         specifier: ^4.1.1
         version: 4.1.1(vue@3.3.4)
+      '@vben/hooks':
+        specifier: workspace:*
+        version: link:packages/hooks
       '@vueuse/core':
         specifier: ^10.3.0
         version: 10.3.0(vue@3.3.4)
@@ -38,6 +41,9 @@ importers:
       mockjs:
         specifier: ^1.1.0
         version: 1.1.0
+      path-to-regexp:
+        specifier: ^6.2.1
+        version: 6.2.1
       pinia:
         specifier: 2.1.4
         version: 2.1.4(typescript@5.1.6)(vue@3.3.4)
@@ -47,6 +53,9 @@ importers:
       qs:
         specifier: ^6.11.2
         version: 6.11.2
+      resize-observer-polyfill:
+        specifier: ^1.5.1
+        version: 1.5.1
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -56,6 +65,9 @@ importers:
       vue-router:
         specifier: ^4.2.4
         version: 4.2.4(vue@3.3.4)
+      vue-types:
+        specifier: ^5.1.1
+        version: 5.1.1(vue@3.3.4)
     devDependencies:
       '@commitlint/cli':
         specifier: ^17.6.6
@@ -81,6 +93,9 @@ importers:
       '@vben/ts-config':
         specifier: workspace:*
         version: link:internal/ts-config
+      '@vben/types':
+        specifier: workspace:*
+        version: link:packages/types
       '@vben/vite-config':
         specifier: workspace:*
         version: link:internal/vite-config
@@ -265,6 +280,21 @@ importers:
       vite-plugin-svg-icons:
         specifier: ^2.0.1
         version: 2.0.1(vite@4.4.8)
+
+  packages/hooks:
+    dependencies:
+      '@vueuse/core':
+        specifier: ^10.2.1
+        version: 10.3.0(vue@3.3.4)
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+    devDependencies:
+      '@vben/types':
+        specifier: workspace:*
+        version: link:../types
+
+  packages/types: {}
 
 packages:
 
@@ -4850,7 +4880,6 @@ packages:
   /is-plain-object@5.0.0:
     resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /is-reference@1.2.1:
     resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
@@ -5913,7 +5942,6 @@ packages:
 
   /path-to-regexp@6.2.1:
     resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
-    dev: true
 
   /path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
@@ -7958,6 +7986,19 @@ packages:
     dependencies:
       is-plain-object: 3.0.1
       vue: 3.3.4
+
+  /vue-types@5.1.1(vue@3.3.4):
+    resolution: {integrity: sha512-FMY/JCLWePXgGIcMDqYdJsQm1G0CDxEjq6W0+tZMJZlX37q/61eSGSIa/XFRwa9T7kkKXuxxl94/2kgxyWQqKw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      vue: ^2.0.0 || ^3.0.0
+    peerDependenciesMeta:
+      vue:
+        optional: true
+    dependencies:
+      is-plain-object: 5.0.0
+      vue: 3.3.4
+    dev: false
 
   /vue@3.3.4:
     resolution: {integrity: sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==}

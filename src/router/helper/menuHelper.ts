@@ -1,9 +1,14 @@
-import type { AppRouteModule, AppRouteRecordRaw, Menu } from '../types'
+import type { AppRouteModule, AppRouteRecordRaw, Menu, MenuModule } from '../types'
 
 import { cloneDeep } from 'lodash-es'
 
-import { treeMap } from '@/utils/helper/treeHelper'
+import { treeMap, findPath } from '@/utils/helper/treeHelper'
 import { isUrl } from '@/utils/is'
+
+export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
+  const menuList = findPath(treeData, (n) => n.path === path) as Menu[]
+  return (menuList || []).map((item) => item.path)
+}
 
 // 路径处理
 function joinParentPath(menus: Menu[], parentPath = '') {
@@ -23,6 +28,16 @@ function joinParentPath(menus: Menu[], parentPath = '') {
       joinParentPath(menu.children, menu.meta?.hidePathForChildren ? parentPath : menu.path)
     }
   }
+}
+
+// 分析菜单模块
+export function transformMenuModule(menuModule: MenuModule): Menu {
+  const { menu } = menuModule
+
+  const menuList = [menu]
+
+  joinParentPath(menuList)
+  return menuList[0]
 }
 
 /** 将路由转换成菜单 */

@@ -4,6 +4,8 @@ import { intersectionWith, isEqual, mergeWith, unionWith } from 'lodash-es'
 
 import { isArray, isObject } from '@/utils/is'
 
+export const noop = () => {}
+
 /**
  * 将对象作为参数添加到URL
  * @param baseUrl url

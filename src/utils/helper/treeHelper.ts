@@ -43,6 +43,24 @@ export function filter<T = any>(
   return listFilter(tree)
 }
 
+/** 采用广度优先遍历的方式，即先遍历当前节点，然后再遍历它的子节点 */
+export function forEach<T = any>(
+  tree: T[],
+  func: (n: T) => any,
+  config: Partial<TreeHelperConfig> = {},
+): void {
+  config = getConfig(config)
+  const list: any[] = [...tree]
+  const { children } = config
+  for (let i = 0; i < list.length; i++) {
+    //func 返回true就终止遍历，避免大量节点场景下无意义循环，引起浏览器卡顿
+    if (func(list[i])) {
+      return
+    }
+    children && list[i][children] && list.splice(i + 1, 0, ...list[i][children])
+  }
+}
+
 /**
  * @description: 提取树指定结构
  */
@@ -74,4 +92,31 @@ export function treeMapEach(
       ...conversionData,
     }
   }
+}
+
+export function findPath<T = any>(
+  tree: any,
+  func: Fn,
+  config: Partial<TreeHelperConfig> = {},
+): T | T[] | null {
+  config = getConfig(config)
+  const path: T[] = []
+  const list = [...tree]
+  const visitedSet = new Set()
+  const { children } = config
+  while (list.length) {
+    const node = list[0]
+    if (visitedSet.has(node)) {
+      path.pop()
+      list.shift()
+    } else {
+      visitedSet.add(node)
+      node[children!] && list.unshift(...node[children!])
+      path.push(node)
+      if (func(node)) {
+        return path
+      }
+    }
+  }
+  return null
 }

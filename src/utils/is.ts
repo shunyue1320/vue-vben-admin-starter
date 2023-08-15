@@ -32,6 +32,10 @@ export function isString(val: unknown): val is string {
   return is(val, 'String')
 }
 
+export function isBoolean(val: unknown): val is boolean {
+  return is(val, 'Boolean')
+}
+
 export function isEmpty<T = unknown>(val: T): val is T {
   if (isArray(val) || isString(val)) {
     return val.length === 0

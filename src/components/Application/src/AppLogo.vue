@@ -14,7 +14,7 @@
   import { useGlobSetting } from '@/hooks/setting'
   import { useUserStore } from '@/store/modules/user'
   import { PageEnum } from '@/enums/pageEnum'
-  import { useGo } from '/@/hooks/web/usePage'
+  import { useGo } from '@/hooks/web/usePage'
 
   const props = defineProps({
     /** 当前父组件的主题  */
